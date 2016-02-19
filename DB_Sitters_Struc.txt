@@ -1,0 +1,147 @@
+//separate Document/Collection
+education{
+	edType : Integer,
+	edName : String 
+}
+
+//  Shema model corresponding document content in the employeeChildren Collection
+{
+	firstName : String,
+	secondName : String,
+	lastName : String,
+	email : {type : String, required : true, unique : true},
+	username : {type : String, required : true, unique : true},
+	password : {type : String, required : true, unique : true},
+	telephonenumber : String,
+	user : Boolean,             // not admin
+	aprooved : Boolean,     // after main registration the user profile should be approved from admin, to be visible from the customers
+	gender : Integer,          // 0 - male, 1-female
+	educationType : education,    
+	town : String,
+	age : Integer,
+	childrenAgeRange : [
+		{ ageRange : "до 6г.", flag : Boolean },
+		{ ageRange : "от 6г. до 8г.", flag : Boolean },
+		{ ageRange : "от 8г. до 14г.", flag : Boolean }
+	],
+	careTime: [
+		{ time : "08:00 - 18:00 ч.", flag : Boolean },
+		{ time : "18:00 - 24:00 ч.", flag : Boolean },
+		{ time : "18:00 - 08:00 ч.", flag : Boolean }
+	],
+	genderChild : Integer,    // 0 - male, 1-female	
+	credentials : String,
+	Active : Boolean, // the employee could set his profile to be not visible for customers for a period 
+	rating : [
+		{ name : "Обаятелност", value : Integer},
+		{ name : "Отговорност", value : Integer},
+		{ name : "Възможност за промяна на графика", value : Integer}
+	],
+	createdTime : Date,
+	updatedTime : Date,
+    views : Integer
+}
+
+//  Shema model corresponding document content in the customerChildren Collection
+{
+	firstName : String,
+	secondName : String,
+	lastName : String,
+	email : {type : String, required : true, unique : true},
+	username : {type : String, required : true, unique : true},
+	password : {type : String, required : true, unique : true},
+	user : Boolean,             // not admin
+	gender : Integer,          // 0 - male, 1-female
+	town : String,
+	childrenNumber: Integer,
+	children : [
+		{ age : Integer, gender : Integer },
+		{ age : Integer,  gender : Integer },
+		{ age : Integer, gender : Integer },
+		{ flag : Boolean }  // more than 3 - no adtl info needed only msg displayed
+	],
+	careTime: [
+		{ time : "08:00 - 18:00 ч.", flag : Boolean },
+		{ time : "18:00 - 24:00 ч.", flag : Boolean },
+		{ time : "18:00 - 08:00 ч.", flag : Boolean }
+	],
+	genderChild : Integer,    // 0 - male, 1-female	
+	credentials : String,
+	rating : [
+		{ name : "Обаятелност", value : Integer},
+		{ name : "Отговорност", value : Integer},
+		{ name : "Възможност за промяна на графика", value : Integer }
+	],
+	createdTime : Date,
+	updatedTime : Date
+}
+
+
+//  Shema model corresponding document content in the employeeAnimal Collection
+{
+	firstName : String,
+	secondName : String,
+	lastName : String,
+	email : {type : String, required : true, unique : true},
+	username : {type : String, required : true, unique : true},
+	password : {type : String, required : true, unique : true},
+	aprooved : Boolean,     // after main registration the user profile should be approved from admin, to be visible from the customers
+	gender : Integer,          // 0 - male, 1-female
+	educationType : education,     // Collection
+	town : String,
+	age : Integer,
+	animalType: [
+		{ name : "Котки", flag : Boolean },
+		{ name : "Кучета", flag : Boolean },
+		{ name : "Други ( след допълнително обсъждане и договаряне)", flag : Boolean },
+	],
+	careType : [
+		{ name : "Хранене 1 път на ден", flag : Boolean },
+		{ name : "Хранене 2 пъти на ден", flag : Boolean },
+		{ name : "Разхождане 1 път на ден", flag : Boolean },
+		{ name : "Разхождане 2 пъти на ден", flag : Boolean },
+		{ name : "Разресване", flag : Boolean },
+	],
+	credentials : String,
+	rating : [
+		{ name : "Обаятелност", value : Integer},
+		{ name : "Отговорност", value : Integer},
+		{ name : "Възможност за промяна на графика", value : Integer }
+	],
+	createdTime : Date,
+	updatedTime : Date,
+	views : Integer
+}
+
+
+//  Shema model corresponding document content in the customerAnimal Collection
+{
+	firstName : String,
+	secondName : String,
+	lastName : String,
+	email : {type : String, required : true, unique : true},
+	username : {type : String, required : true, unique : true},
+	password : {type : String, required : true, unique : true},
+	user : Boolean,             // not admin
+	gender : Integer,          // 0 - male, 1-female
+	town : String,
+	animalsNumber : Integer,
+	animals : [
+		{ type : String, CareType : String },
+		{ type : String, CareType : String },
+		{ type : String, CareType : String },
+		{ flag : Boolean }  // more than 3 - no adtl info needed only msg displayed
+	],
+	credentials : String,
+	rating : [
+		{ name : "Обаятелност", value : Integer},
+		{ name : "Отговорност", value : Integer},
+		{ name : "Възможност за промяна на графика", value : Integer }
+	],
+	createdTime : Date,
+	updatedTime : Date
+}
+
+
+
+
